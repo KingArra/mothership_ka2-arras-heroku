@@ -1,5 +1,7 @@
 # The Proper Arras.io Private Server Template
 
+## This Template is still in process, but here is is so far..
+
 ## Quick Start Guide
 
 1. Click the top right where it says **Remix to Edit :microphone:**
