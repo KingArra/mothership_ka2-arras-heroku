@@ -41,6 +41,7 @@ Note:
 ## Gamemode Code and Secret Password Combined
 For those who want to have a gamemode code and the secret password combined, there is a way to do that...
 Open the private server with <http://arras.io/#private=arras-template3.glitch.me;aSecretPasswordHere&mode=f> (replace aSecretPasswordHere with the password, and f as the gamemode code) 
+
 ## Breaking Changes
 
 Breaking changes are important updates to the template that you should do on your server, as otherwise it may stop functioning. The last breaking change is on April 10th, 2019. If you've made a private server before that day, it may no longer work without this update. See `CHANGELOG.md` for details.
