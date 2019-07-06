@@ -4634,13 +4634,12 @@ var maintainloop = (() => {
     let makenpcs = (() => {
         //Make dominators.
             let f = (loc, team) => { 
-              let type = ran.dice(2)) ? ran.choose([Class.gunnerDominator]) : Class.destroyerDominator;
+              let type = (ran.dice(2)) ? ran.choose([Class.gunnerDominator]) : Class.destroyerDominator;
                 let o = new Entity(loc);
                     o.define(type);
                     o.team = -100; 
                     o.color = 13; 
-// ran.chooseDominatorType();
-// (ran.dice(2)) ? ran.choose([Class.gunnerDominator]) : Class.destroyerDominator;
+
 
             };
                 room['domi'].forEach((loc) => { f(loc); }); 
