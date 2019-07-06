@@ -4622,7 +4622,7 @@ var maintainloop = (() => {
     };
   let spawnDominator = census => {
       let spot, i = 4;
-      do { spot = room.randomType('domi'); i--; if (!i) return 0; } while (dirtyCheck(spot, 100));
+      do { spot = room.randomType('domi'); i--; if (!i) return 0; } while (dirtyCheck(spot, 1));
       let type = (ran.dice(2)) ? ran.choose([Class.gunnerDominator, Class.destroyerDominator]) : Class.dominator;
       let o = new Entity(spot);
       o.define(type);
