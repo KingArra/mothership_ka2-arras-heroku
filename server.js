@@ -4620,28 +4620,27 @@ var maintainloop = (() => {
                 o.team = -100;
         }
     };
-  let spawnDominator = census => {
-      let spot, i = 2;
-      spot = room.randomType('domi'); i--; if (!i) return 0;
-      let type = (ran.dice(2)) ? ran.choose([Class.gunnerDominator, Class.destroyerDominator]) : Class.dominator;
-      let o = new Entity(spot);
-      o.define(type);
-      o.team = -100; //Dominators spawn over time. we need to fix that. -Imperium
-      o.color = 13; 
-//-100 is the Arena Closer team number, and 13 is the Arena Closer color.
-  };
+      //Dominators spawn over time. We need to fix that. -Imperium
+  
+//-100 is the Arena Closer team number, and 13 is the Arena Closer color. -ℙ𝕣𝕠𝕂𝕒𝕞𝕖𝕣𝕠𝕟
     // The NPC function
     let makenpcs = (() => {
-        // Make base protectors if needed.
-            /*let f = (loc, team) => { 
+        //Make dominators.
+            let f = (loc, team) => { 
+              let type = (ran.dice(2)) ? ran.choose([Class.gunnerDominator]) : Class.destroyerDominator;
                 let o = new Entity(loc);
-                    o.define(Class.baseProtector);
-                    o.team = -team;
-                    o.color = [10, 11, 12, 15][team-1];
+                    o.define(type);
+                    o.team = -100; //I didn't want Base Protectors!
+                    o.color = 13; //I'm not making Base Protectors, I'm making dominators.
+              //You removed the script?!
+           //what script?
+//The Base Protector Script in gray! I was going to use it later!
+//Oh, you didn't said that to me earlier...
+//No worries, the script is still in the normal template used for this project.
+//ok, lets try this.
+
             };
-            for (let i=1; i<5; i++) {
-                room['bas' + i].forEach((loc) => { f(loc, i); }); 
-            }*/
+                room['domi'].forEach((loc) => { f(loc); }); 
         // Return the spawning function
         let bots = [];
         return () => {
@@ -4658,7 +4657,6 @@ var maintainloop = (() => {
             }).filter(e => { return e; });    
             // Spawning
             spawnCrasher(census);
-            spawnDominator(census);
             spawnBosses(census);
             /*/ Bots
                 if (bots.length < c.BOTS) {
