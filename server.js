@@ -2438,7 +2438,7 @@ class Entity {
     kill() {
         this.health.amount = -1;
        if (c.MODE == "tdm" && this.name == "Dominator")
-       {if (this.health.amount <= 0) {this.team = this.killers.team; this.health.amount = 1000}}
+       {if (this.health.amount = 0) {this.team = this.killers.team;  this.health.amount = 1000}}
         
     } //Still not working. Keep trying...
      //See DM's
@@ -3820,9 +3820,7 @@ const sockets = (() => {
                   switch (entry.team) {
                     case -100: return entry.color
                     case -1: return 10
-                    case -2: return 11
                     case -3: return 12
-                    case -4: return 15
                     default:
                       if (room.gameMode[0] === '2' || room.gameMode[0] === '3' || room.gameMode[0] === '4') return entry.color
                       return 11
