@@ -2438,7 +2438,7 @@ class Entity {
     kill() {
         this.health.amount = -1;
        if (c.MODE == "tdm" && this.name == "Dominator")
-       {if (this.health.amount = 0) {this.team = this.killers.team;  this.health.amount = 1000}}
+       {if (this.health.amount < 1) {this.team = this.killer.team;  this.health.amount = 1000}}
         
     } //Still not working. Keep trying...
      //See DM's
