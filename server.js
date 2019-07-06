@@ -2438,10 +2438,11 @@ class Entity {
     kill() {
         this.health.amount = -1;
        if (c.MODE == "dom" && this.name == "Dominator")
-       {if (this.health.amount < 0) {this.team = this.killer.team}}
+       {if (this.health.amount <= 0) {this.team = this.killer.team}}
         
-    }
-
+    } //Still not working. Keep trying...
+     //thanks.
+//Ctrl + F to search.
     destroy() {
         // Remove from the protected entities list
         if (this.isProtected) util.remove(entitiesToAvoid, entitiesToAvoid.indexOf(this)); 
