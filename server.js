@@ -2438,10 +2438,10 @@ class Entity {
     kill() {
         this.health.amount = -1;
        if (c.MODE == "dom" && this.name == "Dominator")
-       {if (this.health.amount <= 0) {this.team = this.killer.team}}
+       {if (this.health.amount <= 0) {this.team = this.killers.team; this.health.amount = 1000}}
         
     } //Still not working. Keep trying...
-     //thanks.
+     //See DM's
 //Ctrl + F to search.
     destroy() {
         // Remove from the protected entities list
@@ -3302,6 +3302,7 @@ const sockets = (() => {
                                 census[p.team - 1]++; 
                                 if (p.body != null) { scoreCensus[p.team - 1] += p.body.skill.score; }
                             });
+
                             let possiblities = [];
                             for (let i=0, m=0; i<4; i++) {
                                 let v = Math.round(1000000 * (room['bas'+(i+1)].length + 1) / (census[i] + 1) / scoreCensus[i]);
@@ -3344,6 +3345,7 @@ const sockets = (() => {
                                 ran.choose([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]) : 12; // red
                         }
                     }
+
                     // Decide what to do about colors when sending updates and stuff
                     player.teamColor = (!c.RANDOM_COLORS && room.gameMode === 'ffa') ? 10 : body.color; // blue
                     // Set up the targeting structure
