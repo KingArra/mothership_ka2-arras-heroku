@@ -4621,12 +4621,12 @@ var maintainloop = (() => {
         }
     };
   let spawnDominator = census => {
-      let spot, i = 4;
-      do { spot = room.randomType('domi'); i--; if (!i) return 0; } while (dirtyCheck(spot, 1));
+      let spot, i = 2;
+      spot = room.randomType('domi'); i--; if (!i) return 0;
       let type = (ran.dice(2)) ? ran.choose([Class.gunnerDominator, Class.destroyerDominator]) : Class.dominator;
       let o = new Entity(spot);
       o.define(type);
-      o.team = -100; 
+      o.team = -100; //Dominators spawn over time. we need to fix that. -Imperium
       o.color = 13; 
 //-100 is the Arena Closer team number, and 13 is the Arena Closer color.
   };
