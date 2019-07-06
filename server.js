@@ -2298,7 +2298,7 @@ class Entity {
             this.accel.y -= Math.min(this.y - this.realSize + 50, 0) * c.ROOM_BOUND_FORCE / roomSpeed;
             this.accel.y -= Math.max(this.y + this.realSize - room.height - 50, 0) * c.ROOM_BOUND_FORCE / roomSpeed;
         }
-        if (room.gameMode === 'tdm' && this.type !== 'food') { 
+        if (room.gameMode === 'tdm' && this.type !== 'food' || room.gameMode === 'dom' && this.type !== 'food') { 
             let loc = { x: this.x, y: this.y, };
             if (
                 (this.team !== -1 && room.isIn('bas1', loc)) ||
@@ -3295,7 +3295,7 @@ const sockets = (() => {
                     // Find the desired team (if any) and from that, where you ought to spawn
                     player.team = socket.rememberedTeam;
                     switch (room.gameMode) {
-                        case "tdm": {
+                        case "tdm" || "dom": {
                             // Count how many others there are
                             let census = [1, 1, 1, 1], scoreCensus = [1, 1, 1, 1];
                             players.forEach(p => { 
@@ -3336,7 +3336,7 @@ const sockets = (() => {
                     player.body = body;
                     // Decide how to color and team the body
                     switch (room.gameMode) {
-                        case "tdm": {
+                        case "tdm" || "dom": {
                             body.team = -player.team;
                             body.color = [10, 11, 12, 15][player.team - 1];
                         } break;
