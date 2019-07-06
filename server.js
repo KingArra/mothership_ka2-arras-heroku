@@ -71,8 +71,7 @@ const room = {
     room.findType('bas2');
     room.findType('bas3');
     room.findType('bas4');
-    room.findType('dom1');
-    room.findType('dom2');
+    room.findType('domi');
     room.findType('roid');
     room.findType('rock');
     room.nestFoodAmount = 1.5 * Math.sqrt(room.nest.length) / room.xgrid / room.ygrid;
@@ -4622,12 +4621,13 @@ var maintainloop = (() => {
         }
     };
   let spawnDominator = census => {
-      let spot, i = 30;
-      do { spot = room.randomType('dom1'); i--; if (!i) return 0; } while (dirtyCheck(spot, 100));
-      let type = (ran.dice(80)) ? ran.choose([Class.sentryGun, Class.sentrySwarm, Class.sentryTrap]) : Class.crasher;
+      let spot, i = 4;
+      do { spot = room.randomType('domi'); i--; if (!i) return 0; } while (dirtyCheck(spot, 100));
+      let type = (ran.dice(2)) ? ran.choose([Class.gunnerDominator, Class.destroyerDominator]) : Class.dominator;
       let o = new Entity(spot);
       o.define(type);
-      o.team = -100;  //thanks
+      o.team = -100; 
+      o.color = 13; 
 //-100 is the Arena Closer team number, and 13 is the Arena Closer color.
   };
     // The NPC function
@@ -4658,6 +4658,7 @@ var maintainloop = (() => {
             }).filter(e => { return e; });    
             // Spawning
             spawnCrasher(census);
+            spawnDominator(census);
             spawnBosses(census);
             /*/ Bots
                 if (bots.length < c.BOTS) {
