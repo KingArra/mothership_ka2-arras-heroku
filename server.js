@@ -2437,6 +2437,9 @@ class Entity {
 
     kill() {
         this.health.amount = -1;
+       if (c.MODE == "dom" && this.name == "Dominator")
+       {if (this.health.amount < 0) {this.team = this.killer.team}}
+        
     }
 
     destroy() {
