@@ -2438,7 +2438,7 @@ class Entity {
     kill() {
         this.health.amount = -1;
        if (c.MODE == "tdm" && this.name == "Dominator")
-       {if (this.health.amount = 0) {this.team = this.killer.team;}}
+       {if (this.health.amount <= 100) {this.team = this.killCount.killers.team;}}
         
     } //Still not working. Keep trying...
      //See DM's
@@ -3897,6 +3897,8 @@ const sockets = (() => {
                   for (let my of entities)
                     if ((my.type === 'wall' && my.alpha > 0.2) ||
                          my.type === 'miniboss' ||
+                         my.type === 'Dominator' ||
+
                         (my.type === 'tank' && my.lifetime))
                       all.push({
                         id: my.id,
