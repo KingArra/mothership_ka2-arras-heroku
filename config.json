@@ -20,10 +20,10 @@
     [ "bas1", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm" ],
     [ "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm" ],
     [ "norm", "norm", "domi", "norm", "norm", "norm", "domi", "norm", "norm" ],
-    [ "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm" ],
     [ "norm", "norm", "norm", "norm", "nest", "norm", "norm", "norm", "norm" ],
-    [ "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm" ],
-    [ "norm", "norm", "dom2", "norm", "norm", "norm", "domi", "norm", "norm" ],
+    [ "norm", "norm", "norm", "nest", "domi", "nest", "norm", "norm", "norm" ],
+    [ "norm", "norm", "norm", "norm", "nest", "norm", "norm", "norm", "norm" ],
+    [ "norm", "norm", "domi", "norm", "norm", "norm", "domi", "norm", "norm" ],
     [ "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm" ],
     [ "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "bas2" ]
   ],

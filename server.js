@@ -2346,7 +2346,6 @@ class Entity {
 
         // Check for death
         if (this.isDead()) {
-          if (this.master.type === 'Dominator') { c.ROOM_SETUP[2[2]] = 'dom1' }; 
             // Initalize message arrays
             let killers = [], killTools = [], notJustFood = false;
             // If I'm a tank, call me a nameless player
@@ -2372,6 +2371,7 @@ class Entity {
                 }
                 killTools.push(instance); // Keep track of what actually killed me
             });
+            if (this.master.type === 'Dominator') { c.ROOM_SETUP[2[2]] = 'dom' + killers.team }; //or something like that
             // Remove duplicates
             killers = killers.filter((elem, index, self) => { return index == self.indexOf(elem); });
             // If there's no valid killers (you were killed by food), change the message to be more passive
