@@ -2374,7 +2374,7 @@ class Entity {
                 } else if (instance.settings.acceptsScore) {
                     instance.skill.score += jackpot;
                 }
-                let justtesting = instance.master.body.team; //it didnt work...
+                let justtesting = instance.master.body.team; //You need to bring things from below to up here to make it work!
                 killTools.push(instance); // Keep track of what actually killed me
             });
             // Remove duplicates
