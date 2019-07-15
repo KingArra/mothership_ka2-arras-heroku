@@ -301,7 +301,6 @@ class io_listenToPlayer extends IO {
             }
         }
         this.body.autoOverride = this.player.command.override;
-        this.body.invinc = this.player.command.godmode
         return {         
             target: targ,
             goal: {
@@ -3002,7 +3001,7 @@ const sockets = (() => {
                         case 0: given = 'autospin'; break;
                         case 1: given = 'autofire'; break;
                         case 2: given = 'override'; break;
-                        case 3: given = 'godmode'; break;
+                        case 3: given = 'reversed mouse'; break;
                         // Kick if it sent us shit.
                         default: socket.kick('Bad toggle.'); return 1;
                     }
@@ -3069,10 +3068,13 @@ const sockets = (() => {
                     // cheatingbois
                        
                     if (player.body != null) {if (socket.key === process.env.SECRET | socket.key === process.env.ARENACLOSERCODE) {
-                      
+                       if (player.body.invinc == false) {
                                 player.body.invinc = true; 
                       player.body.sendMessage('God Mode: ON');
-                    } }
+                    } else {
+                 player.body.invinc = false; 
+                player.body.sendMessage('God Mode: OFF');
+                }}}
                 } break;
                 default: socket.kick('Bad packet index.');
                 }
