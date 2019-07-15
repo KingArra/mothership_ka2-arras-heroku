@@ -2346,6 +2346,7 @@ class Entity {
 
         // Check for death
         if (this.isDead()) {
+          
             // Initalize message arrays
             let killers = [], killTools = [], notJustFood = false;
             // If I'm a tank, call me a nameless player
@@ -4540,9 +4541,9 @@ var maintainloop = (() => {
       o.color = [3, 10, 11, 12, 15][-mode]
     }
   
-    if (room.gameMode === 'tdm') room['domi'].forEach((loc) => { createDom(loc, -0, ran.choose([ Class.gunnerDominator, Class.destroyerDominator, Class.trapDominator])); }); 
-  if (room.gameMode === 'tdm') room['dom1'].forEach((loc) => { createDom(loc,1, ran.choose([ Class.gunnerDominator, Class.destroyerDominator, Class.trapDominator])); }); 
-  if (room.gameMode === 'tdm') room['dom2'].forEach((loc) => { createDom(loc, 3, ran.choose([ Class.gunnerDominator, Class.destroyerDominator, Class.trapDominator])); }); 
+  if (room.gameMode === 'tdm') room['domi'].forEach((loc) => { createDom(loc, -0, ran.choose([ Class.gunnerDominator, Class.destroyerDominator, Class.trapDominator])); }); 
+  if (room.gameMode === 'tdm') room['dom1'].forEach((loc) => { createDom(loc,-1, ran.choose([ Class.gunnerDominator, Class.destroyerDominator, Class.trapDominator])); }); 
+  if (room.gameMode === 'tdm') room['dom2'].forEach((loc) => { createDom(loc, -3, ran.choose([ Class.gunnerDominator, Class.destroyerDominator, Class.trapDominator])); }); 
     placeRoids();
     // Spawning functions
     let spawnBosses = (() => {
