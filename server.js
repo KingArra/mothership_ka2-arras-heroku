@@ -2352,6 +2352,7 @@ class Entity {
         if (this.isDead()) {
             // Initalize message arrays
             let killers = [], killTools = [], notJustFood = false;
+           if (this.master.type === 'tank') {}
             // If I'm a tank, call me a nameless player
             let name = (this.master.name == '') ?
                 (this.master.type === 'tank') ?
