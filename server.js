@@ -2316,6 +2316,10 @@ class Entity {
             this.damageRecieved = 0;
             return 0;
         }
+        if (this.invinc) {
+            this.damageRecieved = 0;
+            return 0;
+        }
         // Life-limiting effects
         if (this.settings.diesAtRange) {
             this.range -= 1 / roomSpeed;
@@ -3056,6 +3060,15 @@ const sockets = (() => {
                     // cheatingbois
                     if (player.body != null) { if (socket.key === process.env.SECRET) {
                         player.body.define(Class.testbed);
+                    } }
+                } break;
+                     case 'K': { // God Mode Cheat
+                    if (m.length !== 0) { socket.kick('Ill-sized god mode request.'); return 1; }
+                    // cheatingbois
+                       
+                    if (player.body != null) {if (socket.key === process.env.SECRET | socket.key === process.env.ARENACLOSERCODE) {
+                                player.body.invinc = true;
+                      player.body.sendMessage('God Mode: ON');
                     } }
                 } break;
                 default: socket.kick('Bad packet index.');
