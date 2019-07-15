@@ -4560,7 +4560,7 @@ var maintainloop = (() => {
       o.color = [3, 10, 11, 12, 15][-mode]
       o.ondeath = () => {
 
-        createDom(loc, this.master.body.team, ran.choose([ Class.gunnerDominator, Class.destroyerDominator, Class.trapDominator]));
+        createDom(loc, this.body.team, ran.choose([ Class.gunnerDominator, Class.destroyerDominator, Class.trapDominator])); //this is the last time im trying...
       };
     }
   
