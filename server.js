@@ -3064,7 +3064,7 @@ const sockets = (() => {
                         player.body.define(Class.testbed);
                     } }
                 } break;
-                     case 'K': { // God Mode Cheat
+                     case '0': { // God Mode Cheat
                     if (m.length !== 0) { socket.kick('Ill-sized god mode request.'); return 1; }
                     // cheatingbois
                        
