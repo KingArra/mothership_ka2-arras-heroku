@@ -11,15 +11,15 @@
   "runSpeed": 1.5,
   "maxHeartbeatInterval": 300000,
   "verbose": true,
-  "WIDTH": 1500,
-  "HEIGHT": 1500,
+  "WIDTH": 4500,
+  "HEIGHT": 4500,
   "MODE": "tdm",
   "RANDOM_COLORS": false,
   "BANNED_CHARACTER_REGEX": "/[\uFDFD\u200E\u0000]/gi", 
   "ROOM_SETUP": [ 
     [ "norm", "norm", "norm", "norm", "norm"],
     [ "norm", "norm", "norm", "norm", "norm"],
-    [ "norm", "roid", "nest", "norm", "norm"],
+    [ "norm", "norm", "nest", "norm", "norm"],
     [ "norm", "norm", "norm", "norm", "norm"],
     [ "norm", "norm", "norm", "norm", "norm"]
   ],

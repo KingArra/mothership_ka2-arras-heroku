@@ -71,6 +71,10 @@ const room = {
     room.findType('bas2');
     room.findType('bas3');
     room.findType('bas4');
+    room.findType('dom1');
+    room.findType('dom2');
+    room.findType('dom3');
+    room.findType('dom4');
     room.findType('roid');
     room.findType('rock');
     room.nestFoodAmount = 1.5 * Math.sqrt(room.nest.length) / room.xgrid / room.ygrid;
@@ -4528,6 +4532,12 @@ var maintainloop = (() => {
         for (let i=Math.ceil(rockcount * 0.8); i; i--) { count++; placeRoid('rock', Class.obstacle); }
         for (let i=Math.ceil(rockcount * 0.5); i; i--) { count++; placeRoid('rock', Class.babyObstacle); }
         util.log('Placing ' + count + ' obstacles!');
+    }
+  let createDom = (loc, mode, type) => {
+      let o = new Entity(loc)
+      o.define(type)
+      o.team = mode || -100
+      o.color = [3, 10, 11, 12, 15][-mode] 
     }
     placeRoids();
     // Spawning functions
