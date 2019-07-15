@@ -2373,8 +2373,7 @@ class Entity {
                     killers.push(instance.master); // And keep track of who killed me
                 } else if (instance.settings.acceptsScore) {
                     instance.skill.score += jackpot;
-                }
-                let justtesting = instance.master.body.team; //You need to bring things from below to up here to make it work!
+                }//You need to bring things from below to up here to make it work!
                 killTools.push(instance); // Keep track of what actually killed me
             });
             // Remove duplicates
@@ -4561,7 +4560,7 @@ var maintainloop = (() => {
       o.color = [3, 10, 11, 12, 15][-mode]
       o.ondeath = () => {
 
-        createDom(loc, justtesting, ran.choose([ Class.gunnerDominator, Class.destroyerDominator, Class.trapDominator]));
+        createDom(loc, this.master.body.team, ran.choose([ Class.gunnerDominator, Class.destroyerDominator, Class.trapDominator]));
       };
     }
   
