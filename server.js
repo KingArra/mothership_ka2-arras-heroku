@@ -72,6 +72,8 @@ const room = {
     room.findType('bas3');
     room.findType('bas4');
     room.findType('domi');
+    room.findType('dom1');
+    room.findType('dom2');
     room.findType('roid');
     room.findType('rock');
     room.nestFoodAmount = 1.5 * Math.sqrt(room.nest.length) / room.xgrid / room.ygrid;
@@ -3893,6 +3895,7 @@ const sockets = (() => {
                   for (let my of entities)
                     if ((my.type === 'wall' && my.alpha > 0.2) ||
                          my.type === 'miniboss' ||
+                         my.type === 'Dominator' ||
                         (my.type === 'tank' && my.lifetime))
                       all.push({
                         id: my.id,

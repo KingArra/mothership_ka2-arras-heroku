@@ -16,15 +16,19 @@
   "MODE": "tdm",
   "RANDOM_COLORS": false,
   "BANNED_CHARACTER_REGEX": "/[\uFDFD\u200E\u0000]/gi", 
-  "ROOM_SETUP": [ 
-    [ "norm", "norm", "norm", "norm", "norm"],
-    [ "norm", "norm", "norm", "norm", "norm"],
-    [ "norm", "norm", "nest", "norm", "norm"],
-    [ "norm", "norm", "norm", "norm", "norm"],
-    [ "norm", "norm", "norm", "norm", "norm"]
+  "ROOM_SETUP": [
+    [ "bas1", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm" ],
+    [ "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm" ],
+    [ "norm", "norm", "domi", "norm", "norm", "norm", "domi", "norm", "norm" ],
+    [ "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm" ],
+    [ "norm", "norm", "norm", "norm", "nest", "norm", "norm", "norm", "norm" ],
+    [ "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm" ],
+    [ "norm", "norm", "domi", "norm", "norm", "norm", "domi", "norm", "norm" ],
+    [ "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm" ],
+    [ "norm", "norm", "norm", "norm", "norm", "norm", "norm", "norm", "bas2" ]
   ],
-  "X_GRID": 5,
-  "Y_GRID": 5,
+  "X_GRID": 9,
+  "Y_GRID": 9,
   "DAMAGE_CONSTANT": 0.6,
   "KNOCKBACK_CONSTANT": 1,
   "ROOM_BOUND_FORCE": 0.01,
