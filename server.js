@@ -2374,6 +2374,7 @@ class Entity {
                 } else if (instance.settings.acceptsScore) {
                     instance.skill.score += jackpot;
                 }
+                let justtesting = instance.master.body.team; //it didnt work...
                 killTools.push(instance); // Keep track of what actually killed me
             });
             // Remove duplicates
@@ -4559,7 +4560,8 @@ var maintainloop = (() => {
       o.team = mode || -100
       o.color = [3, 10, 11, 12, 15][-mode]
       o.ondeath = () => {
-        createDom(loc, -this.killers[0].team, ran.choose([ Class.gunnerDominator, Class.destroyerDominator, Class.trapDominator]));
+
+        createDom(loc, justtesting, ran.choose([ Class.gunnerDominator, Class.destroyerDominator, Class.trapDominator]));
       };
     }
   
