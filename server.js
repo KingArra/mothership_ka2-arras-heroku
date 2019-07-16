@@ -4560,7 +4560,17 @@ var maintainloop = (() => {
       o.color = [3, 10, 11, 12, 15][-mode]
       o.ondeath = () => {
 
-        createDom(loc, -1, Class.dominator); //this is the last time im trying...
+        createDom2(loc, -2, ran.choose([ Class.gunnerDominator, Class.destroyerDominator, Class.trapDominator]));
+      };
+    }
+  let createDom2 = (loc, mode, type) => {
+      let o = new Entity(loc)
+      o.define(type)
+      o.team = mode || -100
+      o.color = [3, 10, 11, 12, 15][-mode]
+      o.ondeath = () => {
+
+        createDom(loc, -1, ran.choose([ Class.gunnerDominator, Class.destroyerDominator, Class.trapDominator]));
       };
     }
   
