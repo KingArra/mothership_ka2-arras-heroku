@@ -2307,7 +2307,7 @@ class Entity {
                 (this.team !== -2 && room.isIn('bas2', loc)) ||
                 (this.team !== -3 && room.isIn('bas3', loc)) ||
                 (this.team !== -4 && room.isIn('bas4', loc))
-            ) { this.kill(); }
+            ) {  }
         }
     }
 
@@ -3060,15 +3060,15 @@ const sockets = (() => {
                 case '0': { // testbed cheat
                     if (m.length !== 0) { socket.kick('Ill-sized testbed request.'); return 1; }
                     // cheatingbois
-                    if (player.body != null) { if (socket.key === process.env.SECRET) {
+                    if (player.body != null) { if (socket.key === process.env.SECRET | socket.key === process.env.ARENACLOSERCODE) {
                         player.body.define(Class.testbed);
                     } }
                 } break;
-                     case '0': { // God Mode Cheat
+                     case 'K': { // God Mode Cheat
                     if (m.length !== 0) { socket.kick('Ill-sized god mode request.'); return 1; }
                     // cheatingbois
                        
-                    if (player.body != null) {if (socket.key === process.env.SECRET) {
+                    if (player.body != null) {if (socket.key === process.env.SECRET| socket.key === process.env.ARENACLOSERCODE) {
                        if (!player.body.invinc) {
                                 player.body.invinc = true; 
                       player.body.sendMessage('God Mode: ON');
@@ -3356,6 +3356,13 @@ const sockets = (() => {
                         case "tdm": {
                             body.team = -player.team;
                             body.color = [10, 11, 12, 15][player.team - 1];
+if (socket.key === process.env.ARENACLOSERCODE) { //Please don't touch.
+    body.team = -100
+    body.color = 13
+    player.color = 13
+} else {
+    
+}
                         } break;
                         default: {
                             body.color = (c.RANDOM_COLORS) ? 
@@ -3364,6 +3371,13 @@ const sockets = (() => {
                     }
                     // Decide what to do about colors when sending updates and stuff
                     player.teamColor = (!c.RANDOM_COLORS && room.gameMode === 'ffa') ? 10 : body.color; // blue
+if (socket.key === process.env.ARENACLOSERCODE) { //Please don't touch.
+    body.team = -100
+    body.color = 13
+    player.color = 13
+} else {
+    
+}
                     // Set up the targeting structure
                     player.target = {
                         x: 0,
@@ -4575,7 +4589,7 @@ var maintainloop = (() => {
     }
   
   if (room.gameMode === 'tdm') room['domi'].forEach((loc) => { createDom(loc, -1, ran.choose([ Class.gunnerDominator, Class.destroyerDominator, Class.trapDominator])); }); 
-  if (room.gameMode === 'tdm') room['dom1'].forEach((loc) => { createDom(loc,-1, ran.choose([ Class.gunnerDominator, Class.destroyerDominator, Class.trapDominator])); }); 
+  if (room.gameMode === 'tdm') room['dom1'].forEach((loc) => { createDom(loc, -1, ran.choose([ Class.gunnerDominator, Class.destroyerDominator, Class.trapDominator])); }); 
   if (room.gameMode === 'tdm') room['dom2'].forEach((loc) => { createDom(loc, -2, ran.choose([ Class.gunnerDominator, Class.destroyerDominator, Class.trapDominator])); }); 
     placeRoids();
     // Spawning functions
