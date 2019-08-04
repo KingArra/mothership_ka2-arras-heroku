@@ -4690,7 +4690,8 @@ var maintainloop = (() => {
                     o.team = -team;
                     o.color = [10, 11, 12, 15][team-1];
             };
-                room['bas' + i].forEach((loc) => { f(loc, i); }); 
+            for (let i=1; i<5; i++) {
+                room['bas' + i].forEach((loc) => { baseProtectors(loc, i); }); 
             }
         // Return the spawning function
         let bots = [];
