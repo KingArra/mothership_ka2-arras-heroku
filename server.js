@@ -4588,9 +4588,9 @@ var maintainloop = (() => {
       };
     }
   
-  if (room.gameMode === 'tdm') room['domi'].forEach((loc) => { createDom(loc, -1, ran.choose([ Class.gunnerDominator, Class.destroyerDominator, Class.trapDominator])); }); 
+  if (room.gameMode === 'tdm') room['domi'].forEach((loc) => { createDom(loc, -3, ran.choose([ Class.gunnerDominator, Class.destroyerDominator, Class.trapDominator])); }); 
   if (room.gameMode === 'tdm') room['dom1'].forEach((loc) => { createDom(loc, -1, ran.choose([ Class.gunnerDominator, Class.destroyerDominator, Class.trapDominator])); }); 
-  if (room.gameMode === 'tdm') room['dom2'].forEach((loc) => { createDom(loc, -2, ran.choose([ Class.gunnerDominator, Class.destroyerDominator, Class.trapDominator])); }); 
+  if (room.gameMode === 'tdm') room['dom2'].forEach((loc) => { createDom(loc, -3, ran.choose([ Class.gunnerDominator, Class.destroyerDominator, Class.trapDominator])); }); 
     placeRoids();
     // Spawning functions
     let spawnBosses = (() => {
