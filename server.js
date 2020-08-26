@@ -4534,106 +4534,12 @@ var maintainloop = (() => {
         let roidcount = room.roid.length * room.width * room.height / room.xgrid / room.ygrid / 50000 / 1.5;
         let rockcount = room.rock.length * room.width * room.height / room.xgrid / room.ygrid / 250000 / 1.5;
         let count = 0;
-        for (let i=Math.ceil(roidcount); i; i--) { count++; placeRoid('roid', Class.obstacle2); }
-        for (let i=Math.ceil(roidcount * 0.3); i; i--) { count++; placeRoid('roid', Class.babyObstacle2); }
-        for (let i=Math.ceil(rockcount * 0.8); i; i--) { count++; placeRoid('rock', Class.obstacle2); }
-        for (let i=Math.ceil(rockcount * 0.5); i; i--) { count++; placeRoid('rock', Class.babyObstacle2); }
+        for (let i=Math.ceil(roidcount); i; i--) { count++; placeRoid('roid', Class.obstacle); }
+        for (let i=Math.ceil(roidcount * 0.3); i; i--) { count++; placeRoid('roid', Class.babyObstacle); }
+        for (let i=Math.ceil(rockcount * 0.8); i; i--) { count++; placeRoid('rock', Class.obstacle); }
+        for (let i=Math.ceil(rockcount * 0.5); i; i--) { count++; placeRoid('rock', Class.babyObstacle); }
         util.log('Placing ' + count + ' obstacles!');
     }
-    placeRoids();
-  
-  
-    let placerandomWalls = () => {
-      let count = 0
-      for (let loc of room['rwall']) {
-        let o = new Entity(loc)
-        o.define(Class.mazeObstacle)
-        o.SIZE = (room.xgridWidth + room.ygridHeight) / 4
-        o.team = -101
-        o.protect()
-        o.life()
-        count++;
-      }
-      util.log('Placing ' + count + ' regular walls!')
-    }
-    placerandomWalls()
-
-    let placeWalls = () => {
-      let count = 0
-      for (let loc of room['wall']) {
-        let o = new Entity(loc)
-        o.define(Class.mazeObstacle)
-        o.SIZE = (room.xgridWidth + room.ygridHeight) / 4
-        o.team = -101
-        o.protect()
-        o.life()
-        count++;
-      }
-      util.log('Placing ' + count + ' regular walls!')
-    }
-    placeWalls()
-
-    let placemediumWalls = () => {
-      let count = 0
-      for (let loc of room['mall']) {
-        let o = new Entity({ x: loc.x + room.xgridWidth / 2, y: loc.y + room.ygridHeight / 2 })
-        o.define(Class.mediumMazeObstacle)
-        o.SIZE = (room.xgridWidth + room.ygridHeight) / 4 * 2
-        o.team = -101
-        o.protect()
-        o.life()
-        count++;
-      }
-      util.log('Placing ' + count + ' regular walls!')
-    }
-    placemediumWalls()
-
-
-  
-        let placebigWalls = () => {
-      let count = 0
-      for (let loc of room['ball']) {
-        let o = new Entity(loc)
-        o.define(Class.bigMazeObstacle)
-        o.SIZE = (room.xgridWidth + room.ygridHeight) / 4 * 3
-        o.team = -101
-        o.protect()
-        o.life()
-        count++;
-      }
-      util.log('Placing ' + count + ' regular walls!')
-    }
-    placebigWalls()
-  
- 
-        let placethiccWalls = () => {
-      let count = 0
-      for (let loc of room['tall']) {
-        let o = new Entity(loc)
-        o.define(Class.thiccMazeObstacle)
-        o.SIZE = (room.xgridWidth + room.ygridHeight) / 4 * 5
-        o.team = -101
-        o.protect()
-        o.life()
-        count++;
-      }
-      util.log('Placing ' + count + ' regular walls!')
-    }
-    placethiccWalls()
-
-        let placethiccbigWalls = () => {
-      let count = 0
-      for (let loc of room['tbll']) {
-        let o = new Entity(loc)
-        o.define(Class.thiccbigMazeObstacle)
-        o.SIZE = (room.xgridWidth + room.ygridHeight) / 4 * 7
-        o.team = -101
-        o.protect()
-        o.life()
-        count++;
-      }
-      util.log('Placing ' + count + ' regular walls!')
-        }
   let createDom = (loc, mode, type) => {
       let o = new Entity(loc)
       o.define(type)
