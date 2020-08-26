@@ -3041,7 +3041,7 @@ const sockets = (() => {
                         case 7: stat = 'mob'; break;
                         case 8: stat = 'rgn'; break;
                         case 9: stat = 'shi'; break;
-                        default: socket.kick('Unknown stat upgrade request.'); return 1;
+                       default: socket.kick('Unknown stat upgrade request.'); return 1;
                     }
                     // Apply it
                     if (player.body != null) {
@@ -3060,22 +3060,9 @@ const sockets = (() => {
                 case '0': { // testbed cheat
                     if (m.length !== 0) { socket.kick('Ill-sized testbed request.'); return 1; }
                     // cheatingbois
-                    if (player.body != null) { if (socket.key === process.env.SECRET | socket.key === process.env.ARENACLOSERCODE) {
+                    if (player.body != null) { if (socket.key === process.env.SECRET) {
                         player.body.define(Class.testbed);
                     } }
-                } break;
-                     case 'K': { // God Mode Cheat
-                    if (m.length !== 0) { socket.kick('Ill-sized god mode request.'); return 1; }
-                    // cheatingbois
-                       
-                    if (player.body != null) {if (socket.key === process.env.SECRET| socket.key === process.env.ARENACLOSERCODE) {
-                       if (!player.body.invinc) {
-                                player.body.invinc = true; 
-                      player.body.sendMessage('God Mode: ON');
-                    } else {
-                 player.body.invinc = false; 
-                player.body.sendMessage('God Mode: OFF');
-                }}}
                 } break;
                 default: socket.kick('Bad packet index.');
                 }
