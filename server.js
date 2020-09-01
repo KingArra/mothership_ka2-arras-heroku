@@ -26,7 +26,72 @@ Array.prototype.remove = index => {
         return r;
     }
 };
+var arenaclosed = 1;
+var donothing=0;
+var domtdm=-100;
+var countdown=0;
+// Random Tier 4 Tank generator
 
+  function randomtank(o){
+   let nametank =o.name;
+   let b = nametank.slice(0,3);
+   let z=4;
+   if (b==='ai_'){
+     z=0; //bots won't spawn as rammers, but players that choose random tanks do
+   }; 
+                    //Define a random tank Math.floor(Math.random() * 80) + 1
+                  switch (Math.floor(Math.random() * 87+z) + 1) {
+                    case 1: o.define(Class.trishot);       break;  case 2: o.define(Class.autoconq);   break;                    
+	                  case 3: o.define(Class.triplet3);      break;  case 4: o.define(Class.autoboom);   break;  	                
+  	                case 5: o.define(Class.sniper5);       break;  case 6: o.define(Class.bentboomer); break;  	                
+                    case 7: o.define(Class.auto5g);        break;  case 8: o.define(Class.quint);      break;                    
+                    case 9: o.define(Class.autocyc);       break;  case 10: o.define(Class.autonail);  break;                    
+                    case 11: o.define(Class.temp);         break;  case 12: o.define(Class.splash);    break;                    
+                    case 13: o.define(Class.autosurf);     break;  case 14: o.define(Class.ext);       break;
+                    case 15: o.define(Class.ground0);      break;  case 16: o.define(Class.penthybrid);break;             
+                    case 17: o.define(Class.autobomb);     break;  case 18: o.define(Class.quinttrapper);break;                    
+                    case 19: o.define(Class.autofight);    break;  case 20: o.define(Class.predahybrid); break;                  
+                    case 21: o.define(Class.megastream);   break;  case 22: o.define(Class.rangerscope); break;                
+                    case 23: o.define(Class.multimortar);  break;  case 24: o.define(Class.rangerguard); break;                   
+                    case 25: o.define(Class.inc);          break;  case 26: o.define(Class.autorang);  break;                  
+                    case 27: o.define(Class.rlaunch);      break;  case 28: o.define(Class.autobush);  break;                   
+                    case 29: o.define(Class.autoskim);     break;  case 30: o.define(Class.automusk);  break;                  
+                    case 31: o.define(Class.hybrid2);      break;  case 32: o.define(Class.autoboost); break;    
+                    case 33: o.define(Class.shotgun3);     break;  case 34: o.define(Class.arifle);    break;                   
+                    case 35: o.define(Class.autoshotgun);  break;  case 36: o.define(Class.divine);    break;                   
+                    case 37: o.define(Class.conthybrid);   break;  case 38: o.define(Class.autocar);   break;                    
+                    case 39: o.define(Class.autoeng);      break;  case 40: o.define(Class.efighter2); break;                   
+                    case 41: o.define(Class.autocont);     break;  case 42: o.define(Class.single2);   break;                   
+                    case 43: o.define(Class.vanq);         break;  case 44: o.define(Class.hybridstream);break;                    
+                    case 45: o.define(Class.crush);        break;  case 46: o.define(Class.work);      break;                   
+                    case 47: o.define(Class.heavydouble);  break;  case 48: o.define(Class.obs);       break;                    
+                    case 49: o.define(Class.octotrap);     break;  case 50: o.define(Class.auto7t);    break;                    
+                    case 51: o.define(Class.split2);       break;  case 52: o.define(Class.autobat);   break;  
+                    case 53: o.define(Class.blockade);     break;  case 54: o.define(Class.auto8);     break; 
+                    case 55: o.define(Class.heavy5);       break;  case 56: o.define(Class.sniper5);   break; 
+                    case 57: o.define(Class.deka);         break;  case 58: o.define(Class.road);      break; 
+                    case 59: o.define(Class.supply);       break;  case 60: o.define(Class.autofact);  break; 
+                    case 61: o.define(Class.banshee2);     break;  case 62: o.define(Class.autohang);  break; 
+                    case 63: o.define(Class.command);      break;  case 64: o.define(Class.autolord);  break; 
+                    case 65: o.define(Class.overdriver);   break;  case 66: o.define(Class.autodrive); break; 
+                    case 67: o.define(Class.heli);         break;  case 68: o.define(Class.overnail);  break;
+                    case 69: o.define(Class.spraygunner);  break;  case 70: o.define(Class.double3);   break;
+                    case 71: o.define(Class.airport);      break;  case 72: o.define(Class.autoeag);   break; 
+                    case 73: o.define(Class.autoos);       break;  case 74: o.define(Class.raptor);    break; 
+                    case 75: o.define(Class.osprey);       break;  case 76: o.define(Class.streamtri); break; 
+                    case 77: o.define(Class.falcon2);      break;  case 78: o.define(Class.kite);      break;
+                    case 79: o.define(Class.autofalc);     break;  case 80: o.define(Class.autohive);  break; 
+                    case 81: o.define(Class.nailtrap);     break;  case 82: o.define(Class.scatter);   break; 
+                    case 83: o.define(Class.defend);       break;  case 84: o.define(Class.devas);     break; 
+                    case 85: o.define(Class.septa);        break;  case 86: o.define(Class.torp);      break; 
+                    case 87: o.define(Class.autoside);     break;  case 88: o.define(Class.autosmash2);break;
+                    case 89: o.define(Class.megasmash2);   break;  case 90: o.define(Class.armoredspike);break;
+                    case 91: o.define(Class.rocket);
+        
+                    default: o.define(Class.basic);
+}  
+  
+  }
 // Set up room.
 global.fps = "Unknown";
 var roomSpeed = c.gameSpeed;
@@ -2307,7 +2372,7 @@ class Entity {
         }
     }
 
-    confinementToTheseEarthlyShackles() {
+   confinementToTheseEarthlyShackles() {
         if (this.x == null || this.x == null) {
             util.error('Void Error!');
             util.error(this.collisionArray);
@@ -2322,23 +2387,50 @@ class Entity {
             this.accel.y -= Math.min(this.y - this.realSize + 50, 0) * c.ROOM_BOUND_FORCE / roomSpeed;
             this.accel.y -= Math.max(this.y + this.realSize - room.height - 50, 0) * c.ROOM_BOUND_FORCE / roomSpeed;
         }
-        if (room.gameMode === 'tdm' && this.type !== 'food') { 
+       if (room.gameMode === 'tdm' && this.type !== 'food') { 
             let loc = { x: this.x, y: this.y, };
-            if (
+          if (this.label !=='Arena Closer'){ //This way arena closers don't die inside base
+          if (this.label !=='Spectator'){   // Spectators can't die
+          if (this.label !=='Arena Closer Bullet'){  //This way arena closer bullets don't disappear
+          if (this.team !==-100){if (
                 (this.team !== -1 && room.isIn('bas1', loc)) ||
                 (this.team !== -2 && room.isIn('bas2', loc)) ||
                 (this.team !== -3 && room.isIn('bas3', loc)) ||
                 (this.team !== -4 && room.isIn('bas4', loc))
-            ) {  }
-        }
-    }
 
+            ) {this.invuln = false;
+            this.kill(); }}
+        }}}}
+       if (this.label==="Kill tank"){
+         this.invuln = false;
+         this.kill();
+         this.sendMessage('LOL you killed yourself.');}
+      
+    function killme(){
+     donothing+=1;
+    }
+   if (this.label==='Random Tank'){
+     randomtank(this);
+   }
+    if ((this.label==="End game")||(arenaclosed===0)){
+      arenaclosed=0;  domtdm=-100;
+      if(this.label==="End game"){sockets.broadcast('LOL the game has been ended by '+this.name);this.define(Class.spectate);}      
+      setInterval(killme, 10000);
+      
+      // If Arena Closer doesn't kill you then this will
+      if (((this.label!=='Arena Closer')&&(this.label!=='Dominator')&&(donothing>10))||(this.label==='Base')){
+      if(this.label!=='Arena Closer Bullet'){this.invuln=false;
+      this.kill();
+      }}
+      if ((donothing>10000)){
+        sockets.broadcast('You cannot live forever.');
+        this.invuln=false;
+        this.kill();
+        process.exit(1);
+      }}
+    }
     contemplationOfMortality() {
         if (this.invuln) {
-            this.damageRecieved = 0;
-            return 0;
-        }
-        if (this.invinc) {
             this.damageRecieved = 0;
             return 0;
         }
@@ -4571,7 +4663,7 @@ var maintainloop = (() => {
       o.color = [3, 10, 11, 12, 15][-mode]
       o.ondeath = () => {
 
-        createDom2(loc, -2, ran.choose([ Class.gunnerDominator, Class.destroyerDominator, Class.trapDominator]));
+        createDom2(loc, -2, ran.choose([ Class.gunnerDominator, Class.destroyerDominator,]));
       };
     }
   let createDom2 = (loc, mode, type) => {
@@ -4581,11 +4673,11 @@ var maintainloop = (() => {
       o.color = [3, 10, 11, 12, 15][-mode]
       o.ondeath = () => {
 
-        createDom(loc, -3, ran.choose([ Class.gunnerDominator, Class.destroyerDominator, Class.trapDominator]));
+        createDom(loc, -3, ran.choose([ Class.dominator,]));
       };
     }
   
-  if (room.gameMode === 'tdm') room['domi'].forEach((loc) => { createDom(loc, -3, ran.choose([ Class.gunnerDominator, Class.destroyerDominator, Class.trapDominator])); }); 
+  if (room.gameMode === 'tdm') room['domi'].forEach((loc) => { createDom(loc, -3, ran.choose([ Class.gunnerDominator, Class.destroyerDominator, ])); }); 
     placeRoids();
     // Spawning functions
     let spawnBosses = (() => {
