@@ -682,19 +682,20 @@ class io_minion extends IO {
         }
     }
 }
-class io_hangOutNearMaster extends IO {
+ioTypes.hangOutNearMaster = class extends IO {
     constructor(body) {
-        super(body);
-        this.acceptsFromTop = false;
-        this.orbit = 30;
-        this.currentGoal = { x: this.body.source.x, y: this.body.source.y, };
-        this.timer = 0;
+        super(body)
+        this.acceptsFromTop = false
+        this.orbit = 30
+        this.currentGoal = { x: this.body.source.x, y: this.body.source.y, }
+        this.timer = 0
     }
     think(input) {
-        if (this.body.source != this.body) {
-            let bound1 = this.orbit * 0.8 + this.body.source.size + this.body.size;
-            let bound2 = this.orbit * 1.5 + this.body.source.size + this.body.size;
-            let dist = util.getDistance(this.body, this.body.source) + Math.PI / 8; 
+        if (this.body.invisible[1]) return {}
+        if (this.body.source !== this.body) {
+            let bound1 = this.orbit * 0.8 + this.body.source.size + this.body.size
+            let bound2 = this.orbit * 1.5 + this.body.source.size + this.body.size
+            let dist = util.getDistance(this.body, this.body.source) + Math.PI / 8;
             let output = {
                 target: {
                     x: this.body.velocity.x,
@@ -702,25 +703,46 @@ class io_hangOutNearMaster extends IO {
                 },
                 goal: this.currentGoal,
                 power: undefined,
-            };        
+            };
             // Set a goal
             if (dist > bound2 || this.timer > 30) {
-                this.timer = 0;
+                this.timer = 0
 
-                let dir = util.getDirection(this.body, this.body.source) + Math.PI * ran.random(0.5); 
-                let len = ran.randomRange(bound1, bound2);
-                let x = this.body.source.x - len * Math.cos(dir);
-                let y = this.body.source.y - len * Math.sin(dir);
+                let dir = util.getDirection(this.body, this.body.source) + Math.PI * ran.random(0.5);
+                let len = ran.randomRange(bound1, bound2)
+                let x = this.body.source.x - len * Math.cos(dir)
+                let y = this.body.source.y - len * Math.sin(dir)
                 this.currentGoal = {
                     x: x,
                     y: y,
-                };        
+                };
             }
             if (dist < bound2) {
-                output.power = 0.15;
+                output.power = 0.15
                 if (ran.chance(0.3)) { this.timer++; }
             }
-            return output;
+            return output
+        }
+    }
+}
+class io_spinWhenIdle extends IO {
+    constructor(body) {
+        super(body)
+        this.a = 0
+    }
+
+    think(input) {
+        if (input.target) {
+          this.a = Math.atan2(input.target.y, input.target.x)
+          return input
+        }
+        this.a += 0.02
+        return {
+          target: {
+            x: Math.cos(this.a),
+            y: Math.sin(this.a),
+          },
+          main: true
         }
     }
 }
