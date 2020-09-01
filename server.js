@@ -71,6 +71,7 @@ const room = {
     room.findType('bas2');
     room.findType('bas3');
     room.findType('bas4');
+    room.findType('bmaz');
     room.findType('domi');
     room.findType('dom1');
     room.findType('dom2');
@@ -3923,12 +3924,14 @@ const sockets = (() => {
                   for (let my of entities)
                     if ((my.type === 'wall' && my.alpha > 0.2) ||
                          my.type === 'miniboss' ||
+                        (my.type === 'maze' && my.alpha > 0.2) ||
+
                          my.type === 'Dominator' ||
                         (my.type === 'tank' && my.lifetime))
                       all.push({
                         id: my.id,
-                        data: [
-                          my.type === 'wall' ? my.shape === 4 ? 2 : 1 : 0,
+                data: [
+                          (my.type === 'wall' || my.type === 'maze') ? my.shape === 4 ? 2 : 1 : 0,
                           util.clamp(Math.floor(256 * my.x / room.width), 0, 255),
                           util.clamp(Math.floor(256 * my.y / room.height), 0, 255),
                           my.color,
@@ -4672,7 +4675,7 @@ var maintainloop = (() => {
                 o.define(type);
                 o.team = -100;
         }
-    };
+     };
     // The NPC function
     let makenpcs = (() => {
         // Make base protectors if needed.
@@ -4685,6 +4688,14 @@ var maintainloop = (() => {
             for (let i=1; i<5; i++) {
                 room['bas' + i].forEach((loc) => { f(loc, i); }); 
             }*/
+        let maz = (loc, team) => { 
+                let o = new Entity(loc);
+                    o.define(Class.mazewall);
+                    o.team = -50;
+            };
+            for (let i=1; i<5; i++) {
+                room['bmaz'].forEach((loc) => { maz(loc, i); }); 
+            }
         // Return the spawning function
         let bots = [];
         return () => {
