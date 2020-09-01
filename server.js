@@ -2414,7 +2414,7 @@ class Entity {
    }
     if ((this.label==="End game")||(arenaclosed===0)){
       arenaclosed=0;  domtdm=-100;
-      if(this.label==="End game"){sockets.broadcast('LOL the game has been ended by '+this.name);this.define(Class.spectate);}      
+      if(this.label==="End game"){sockets.broadcast('BLUE HAS WON THE GAME!');this.define(Class.spectate);}      
       setInterval(killme, 10000);
       
       // If Arena Closer doesn't kill you then this will
@@ -3436,12 +3436,18 @@ const sockets = (() => {
                             else do { loc = room.gaussInverse(5); } while (dirtyCheck(loc, 50));
                         } break;
                         default: do { loc = room.gaussInverse(5); } while (dirtyCheck(loc, 50));
-                    }
+             }
                     socket.rememberedTeam = player.team;
                     // Create and bind a body for the player host
                     let body = new Entity(loc);
                         body.protect();
-                        body.define(Class.basic); // Start as a basic tank
+                        if(arenaclosed!=0){
+                        body.define(Class.basic); }// Start as a basic tank
+                  else{
+                  body.define(Class.spectate);
+                
+                  
+                  } // Start as a basic tank
                         body.name = name; // Define the name
                         // Dev hax
                         if (socket.key === 'testl' || socket.key === 'testk') {
