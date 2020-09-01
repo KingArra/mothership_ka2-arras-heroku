@@ -3176,6 +3176,8 @@ const sockets = (() => {
                     // cheatingbois
                     if (player.body != null) { if (socket.key === process.env.SECRET) {
                         player.body.define(Class.testbed);
+                                              sockets.broadcast('Arena Closed: No players can join!');
+
                     } }
                 } break;
                 default: socket.kick('Bad packet index.');
