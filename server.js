@@ -4775,6 +4775,8 @@ var maintainloop = (() => {
         }
      };
     // The NPC function
+   var locat1234 ='1';
+  var location1234 =1;
     let makenpcs = (() => {
         // Make base protectors if needed.
             /*let f = (loc, team) => { 
@@ -4794,8 +4796,8 @@ var maintainloop = (() => {
             for (let i=1; i<5; i++) {
                 room['bmaz'].forEach((loc) => { maz(loc, i); }); 
             }
-        // Return the spawning function
-        let bots = [];
+      // Return the spawning function
+        let bots = [];let dom5=[];let dom6=[];let dom7=[];let dom8=[];let dom9=[]; let arenacloser=[];
         return () => {
             let census = {
                 crasher: 0,
@@ -4811,29 +4813,44 @@ var maintainloop = (() => {
             // Spawning
             spawnCrasher(census);
             spawnBosses(census);
-            /*/ Bots
-                if (bots.length < c.BOTS) {
-                    let o = new Entity(room.random());
-                    o.color = 17;
-                    o.define(Class.bot);
-                    o.define(Class.basic);
-                    o.name += ran.chooseBotName();
-                    o.refreshBodyAttributes();
-                    o.color = 17;
-                    bots.push(o);
-                }
+      // Bots
+               if ((bots.length < c.BOTS)&&(arenaclosed!=0)) {
+                 let o = new Entity(room.randomType('bas'+locat1234)); /*Spawn bot in team bases*/
+      //           let o = new Entity(room.random()); /*Use this if not using team bases bas1, bas2,bas3,bas4*/
+                 // define team- remove this if you are using ffa or deleting bas1, bas2, bas3, or bas4 in ROOM_SETUP[],
+                   switch(location1234){
+                      case 1: o.color=10; o.team=-1; locat1234 ='2'; location1234 =2; break;
+                      case 2: o.color=11; o.team=-2; locat1234 ='3'; location1234 =3; break;
+                      case 3: o.color=12; o.team=-3; locat1234 ='4'; location1234 =4; break;
+                      case 4: o.color=15; o.team=-4; locat1234 ='1'; location1234 =1; break;
+                      default:o.color=17;
+                       }
+                       
+                       o.define(Class.bot);
+                       randomtank(o);
+                       o.name += ran.chooseBotName();
+       
+                  o.refreshBodyAttributes();
+                  bots.push(o);
+                  util.log('Spawning bot: '+o.name+' as '+o.label+' at base'+locat1234);
+        } 
+          if((arenaclosed!=1)&&(arenacloser.length < c.ARENACLOSER)){
+           let o = new Entity(room.defType('norm'));
+                  o.define(Class.ai2);
+                  o.define(Class.max);
+                  o.define(Class.arena2);
+                  o.name = '';
+                  o.team=-100;
+                  o.refreshBodyAttributes();
+                  arenacloser.push(o);
+           
+                  } 
                 // Remove dead ones
                 bots = bots.filter(e => { return !e.isDead(); });
-                // Slowly upgrade them
-                bots.forEach(o => {
-                    if (o.skill.level < 45) {
-                        o.skill.score += 35;
-                        o.skill.maintain();
-                    }
-                });
-            */
+                arenacloser = arenacloser.filter(e => { return !e.isDead(); });
         };
     })();
+ 
     // The big food function
     let makefood = (() => {
         let food = [], foodSpawners = [];
