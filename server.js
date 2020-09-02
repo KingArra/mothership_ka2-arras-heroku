@@ -4665,7 +4665,7 @@ var maintainloop = (() => {
       o.color = [3, 10, 11, 12, 15][-mode]
       o.ondeath = () => {
 
-        createDom2(loc, -2, ran.choose([ Class.gunnerDominator, Class.destroyerDominator,]));
+        createDom2(loc, -1, ran.choose([ Class.dominator,]));
       };
     }
   let createDom2 = (loc, mode, type) => {
@@ -4675,7 +4675,7 @@ var maintainloop = (() => {
       o.color = [3, 10, 11, 12, 15][-mode]
       o.ondeath = () => {
 
-        createDom(loc, -3, ran.choose([ Class.dominator,]));
+        createDom(loc, -3, ran.choose([ Class.gunnerDominator, exports.destroyerDominator]));
       };
     }
   
