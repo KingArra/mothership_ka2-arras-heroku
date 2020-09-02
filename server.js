@@ -3510,6 +3510,8 @@ const sockets = (() => {
                     socket.camera.x = body.x; socket.camera.y = body.y; socket.camera.fov = 2000;
                     // Mark it as spawned
                     socket.status.hasSpawned = true;
+                                      body.sendMessage('11 Minutes till RED Wins.');
+
                     body.sendMessage('You have spawned! Welcome to the game.');
                     body.sendMessage('You will be invulnerable until you move or shoot.');
                     // Move the client camera
@@ -4764,7 +4766,7 @@ var maintainloop = (() => {
         if (ran.chance(1 -  0.5 * census.crasher / room.maxFood / room.nestFoodAmount)) {
             let spot, i = 30;
             do { spot = room.randomType('nest'); i--; if (!i) return 0; } while (dirtyCheck(spot, 100));
-            let type = (ran.dice(80)) ? ran.choose([Class.sentryGun, Class.sentrySwarm, Class.sentryTrap]) : Class.crasher;
+            let type = (ran.dice(80)) ? ran.choose([Class.sentryGun, Class.sentrySwarm, Class.sentryTrap]) : Class;
             let o = new Entity(spot);
                 o.define(type);
                 o.team = -100;
