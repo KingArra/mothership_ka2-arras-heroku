@@ -4786,7 +4786,7 @@ var maintainloop = (() => {
         let maz = (loc, team) => { 
                 let o = new Entity(loc);
                     o.define(Class.mazewall);
-                    o.team = -50;
+                    o.team = -101;
             };
             for (let i=1; i<5; i++) {
                 room['bmaz'].forEach((loc) => { maz(loc, i); }); 
