@@ -4785,7 +4785,7 @@ var maintainloop = (() => {
             }*/
         let maz = (loc, team) => { 
                 let o = new Entity(loc);
-                    o.define(Class.mazewall);
+                    o.define(Class.mazeObstacle);
                     o.team = -101;
             };
             for (let i=1; i<5; i++) {
