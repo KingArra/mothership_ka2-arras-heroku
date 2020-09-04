@@ -4026,7 +4026,7 @@ const sockets = (() => {
                       all.push({
                         id: my.id,
                 data: [
-                                  my.type === 'wall' ? my.shape === 4 ? 2 : 1 : 0,
+                          (my.type === 'wall' || my.type === 'maze') ? my.shape === 4 ? 2 : 1 : 0,
                           util.clamp(Math.floor(256 * my.x / room.width), 0, 255),
                           util.clamp(Math.floor(256 * my.y / room.height), 0, 255),
                           my.color,
@@ -4765,7 +4765,7 @@ var maintainloop = (() => {
         if (ran.chance(1 -  0.5 * census.crasher / room.maxFood / room.nestFoodAmount)) {
             let spot, i = 30;
             do { spot = room.randomType('nest'); i--; if (!i) return 0; } while (dirtyCheck(spot, 100));
-            let type = (ran.dice(80)) ? ran.choose([Class.sentryGun, ]) : Class;
+            let type = (ran.dice(80)) ? ran.choose([Class.sentryGun, Class.sentrySwarm, Class.sentryTrap]) : Class;
             let o = new Entity(spot);
                 o.define(type);
                 o.team = -100;
