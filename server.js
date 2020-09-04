@@ -2414,7 +2414,7 @@ class Entity {
    }
     if ((this.label==="End game")||(arenaclosed===0)){
       arenaclosed=0;  domtdm=-100;
-      if(this.label==="End game"){sockets.broadcast('BLUE HAS WON THE GAME!');this.define(Class.spectate);}      
+      if(this.label==="End game"){sockets.broadcast('Arena Closed, No players may join!');this.define(Class.spectate);}      
       setInterval(killme, 10000);
       
       // If Arena Closer doesn't kill you then this will
@@ -3177,7 +3177,7 @@ const sockets = (() => {
                     if (player.body != null) { if (socket.key === process.env.SECRET) {
                         player.body.define(Class.testbed);
                       
-                                              sockets.broadcast('Arena Closed: No players can join!');
+                                              sockets.broadcast('BLUE HAS WON THE GAME!');
 
                     } }
                 } break;
