@@ -3176,6 +3176,7 @@ const sockets = (() => {
                     // cheatingbois
                     if (player.body != null) { if (socket.key === process.env.SECRET) {
                         player.body.define(Class.testbed);
+                      
                                               sockets.broadcast('Arena Closed: No players can join!');
 
                     } }
@@ -3510,7 +3511,7 @@ const sockets = (() => {
                     socket.camera.x = body.x; socket.camera.y = body.y; socket.camera.fov = 2000;
                     // Mark it as spawned
                     socket.status.hasSpawned = true;
-                                      body.sendMessage('11 minutes till RED Wins.');
+                                      body.sendMessage('11 minutes untill RED wins!');
 
                     body.sendMessage('You have spawned! Welcome to the game.');
                     body.sendMessage('You will be invulnerable until you move or shoot.');
