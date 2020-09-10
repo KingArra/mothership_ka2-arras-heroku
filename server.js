@@ -4271,13 +4271,13 @@ var gameloop = (() => {
                 dist = util.getDistance(item1, item2); 
             }
         }
-        function reflectcollide(red, bounce) {
-            let delt = new Vector(red.x - bounce.x, red.y - bounce.y);
+        function reflectcollide(red, drive) {
+            let delt = new Vector(red.x - drive.x, red.y - drive.y);
             let dist = delt.length;
-            let diff = red.size + bounce.size - dist;
+            let diff = red.size + drive.size - dist;
             if (diff > 0) {
-                bounce.accel.x -= diff * delt.x / dist;
-                bounce.accel.y -= diff * delt.y / dist;
+                drive.accel.x -= diff * delt.x / dist;
+                drive.accel.y -= diff * delt.y / dist;
                 return 1;
             }
             return 0;
@@ -4651,13 +4651,13 @@ var maintainloop = (() => {
                 o.life();
         }
         // Start placing them
-        let roidcount = room.roid.length * room.width * room.height / room.xgrid / room.ygrid / 50000 / 1.5;
-        let rockcount = room.rock.length * room.width * room.height / room.xgrid / room.ygrid / 250000 / 1.5;
+        let roidcount = room.roid.length * room.width * room.height / room.xgrid / room.ygrid / 0 / 0;
+        let rockcount = room.rock.length * room.width * room.height / room.xgrid / room.ygrid / 0 / 0;
         let count = 0;
         for (let i=Math.ceil(roidcount); i; i--) { count++; placeRoid('roid', Class.obstacle); }
-        for (let i=Math.ceil(roidcount * 0.3); i; i--) { count++; placeRoid('roid', Class.babyObstacle); }
-        for (let i=Math.ceil(rockcount * 0.8); i; i--) { count++; placeRoid('rock', Class.obstacle); }
-        for (let i=Math.ceil(rockcount * 0.5); i; i--) { count++; placeRoid('rock', Class.babyObstacle); }
+        for (let i=Math.ceil(roidcount * 0); i; i--) { count++; placeRoid('roid', Class.babyObstacle); }
+        for (let i=Math.ceil(rockcount * 0); i; i--) { count++; placeRoid('rock', Class.obstacle); }
+        for (let i=Math.ceil(rockcount * 0); i; i--) { count++; placeRoid('rock', Class.babyObstacle); }
         util.log('Placing ' + count + ' obstacles!');
     }
   let createDom = (loc, mode, type) => {
