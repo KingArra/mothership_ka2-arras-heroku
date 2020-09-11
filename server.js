@@ -4670,7 +4670,7 @@ var maintainloop = (() => {
       o.ondeath = () => {
 
         createDom2(loc, -1, ran.choose([ Class.dominator,]));
-                                        sockets.broadcast('A RED dominator has been repaired!');
+                                sockets.broadcast('A RED dominator has been destroyed!');
 
       };
     }
@@ -4682,7 +4682,8 @@ var maintainloop = (() => {
       o.ondeath = () => {
 
         createDom(loc, -3, ran.choose([ Class.gunnerDominator, exports.destroyerDominator]));
-                                sockets.broadcast('A RED dominator has been destroyed!');
+                                                sockets.broadcast('A RED dominator has been repaired!');
+
 
       };
     }
