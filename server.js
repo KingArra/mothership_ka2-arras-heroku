@@ -139,7 +139,7 @@ const room = {
     room.findType('bmaz');
     room.findType('domi');
     room.findType('dom1');
-    room.findType('dom2');
+    room.findType('dom3');
     room.findType('roid');
     room.findType('rock');
     room.nestFoodAmount = 1.5 * Math.sqrt(room.nest.length) / room.xgrid / room.ygrid;
@@ -4688,8 +4688,9 @@ var maintainloop = (() => {
       };
     }
   
-  if (room.gameMode === 'tdm') room['domi'].forEach((loc) => { createDom(loc, -3, ran.choose([ Class.gunnerDominator, Class.destroyerDominator, ])); }); 
-    placeRoids();
+  if (room.gameMode === 'tdm') room['domi'].forEach((loc) => { createDom(loc, -1, ran.choose([ Class.gunnerDominator, Class.destroyerDominator,])); }); 
+  if (room.gameMode === 'tdm') room['dom1'].forEach((loc) => { createDom(loc, -1, ran.choose([ Class.gunnerDominator, Class.destroyerDominator,])); }); 
+  if (room.gameMode === 'tdm') room['dom3'].forEach((loc) => { createDom(loc, -3, ran.choose([ Class.gunnerDominator, Class.destroyerDominator,])); });     placeRoids();
     // Spawning functions
     let spawnBosses = (() => {
         let timer = 0;
