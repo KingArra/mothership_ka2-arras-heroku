@@ -2419,7 +2419,7 @@ class Entity {
     if ((this.label==="End game")||(arenaclosed===0)){
       arenaclosed=0;  domtdm=-100;
       if(this.label==="End game"){sockets.broadcast('red=Arena Closed, No players may join!');this.define(Class.closerarena);}      
-      setInterval(killme, 20000);
+      setInterval(killme, 15000);
       
       // If Arena Closer doesn't kill you then this will
       if (((this.label!=='Arena Closer')&&(this.label!=='Dominator')&&(donothing>10))||(this.label==='Base')){
