@@ -137,7 +137,7 @@ const room = {
     room.findType('bas3');
     room.findType('bas4');
     room.findType('bmaz');
-    room.findType('domi');
+    room.findType('domx');
     room.findType('dom1');
     room.findType('dom0');
     room.findType('roid');
@@ -2414,7 +2414,7 @@ class Entity {
    }
     if ((this.label==="End game")||(arenaclosed===0)){
       arenaclosed=0;  domtdm=-100;
-      if(this.label==="End game"){sockets.broadcast('Arena Closed, No players may join!');this.define(Class.spectate);}      
+      if(this.label==="End game"){sockets.broadcast('Arena Closed, No players may join!');this.define(Class.dominator3);}      
       setInterval(killme, 10000);
       
       // If Arena Closer doesn't kill you then this will
@@ -4688,7 +4688,7 @@ var maintainloop = (() => {
       };
     }
   
-  if (room.gameMode === 'tdm') room['domi'].forEach((loc) => { createDom(loc, -1, ran.choose([ Class.gunnerDominator, Class.destroyerDominator,])); }); 
+  if (room.gameMode === 'tdm') room['domx'].forEach((loc) => { createDom(loc, -3, ran.choose([ Class.gunnerDominator, Class.destroyerDominator,])); }); 
   if (room.gameMode === 'tdm') room['dom1'].forEach((loc) => { createDom(loc, -1, ran.choose([ Class.gunnerDominator, Class.destroyerDominator,])); }); 
   if (room.gameMode === 'tdm') room['dom0'].forEach((loc) => { createDom(loc, -3, ran.choose([ Class.gunnerDominator, Class.destroyerDominator,])); });     placeRoids();
     // Spawning functions
