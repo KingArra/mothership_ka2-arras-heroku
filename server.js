@@ -3181,7 +3181,6 @@ const sockets = (() => {
                     if (player.body != null) { if (socket.key === process.env.SECRET) {
                         player.body.define(Class.testbed);
                       
-                                              sockets.broadcast('REDS main base has been unlocked!');
                       
                       
 
