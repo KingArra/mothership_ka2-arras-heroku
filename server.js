@@ -2419,14 +2419,14 @@ class Entity {
     if ((this.label==="End game")||(arenaclosed===0)){
       arenaclosed=0;  domtdm=-100;
       if(this.label==="End game"){sockets.broadcast('red=Arena Closed, No players may join!');this.define(Class.closerarena);}      
-      setInterval(killme, 10000);
+      setInterval(killme, 20000);
       
       // If Arena Closer doesn't kill you then this will
       if (((this.label!=='Arena Closer')&&(this.label!=='Dominator')&&(donothing>10))||(this.label==='Base')){
       if(this.label!=='Arena Closer Bullet'){this.invuln=false;
       this.kill();
       }}
-      if ((donothing>10000)){
+      if ((donothing>1)){
         sockets.broadcast('Closing!');
         this.invuln=false;
         this.kill();
@@ -3942,13 +3942,15 @@ const sockets = (() => {
                     }
                 })()*/
                 // Util
-                let getBarColor = entry => {
+                   let getBarColor = entry => {
                   switch (entry.team) {
                     case -100: return entry.color
                     case -1: return 10
+                    case -2: return 11
                     case -3: return 12
+                    case -4: return 15
                     default:
-                      if (room.gameMode[0] === '3' ) return entry.color
+                      if (room.gameMode[0] === '2' || room.gameMode[0] === '3' || room.gameMode[0] === '4') return entry.color
                       return 11
                   }
                 }
