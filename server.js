@@ -2391,16 +2391,16 @@ class Entity {
             this.accel.y -= Math.min(this.y - this.realSize + 50, 0) * c.ROOM_BOUND_FORCE / roomSpeed;
             this.accel.y -= Math.max(this.y + this.realSize - room.height - 50, 0) * c.ROOM_BOUND_FORCE / roomSpeed;
         }
-       if (room.gameMode === 'tdm' && this.type !== 'food') { 
+      if (room.gameMode === 'tdm' && this.type !== 'food') { 
             let loc = { x: this.x, y: this.y, };
           if (this.label !=='Arena Closer'){ //This way arena closers don't die inside base
           if (this.label !=='Spectator'){   // Spectators can't die
           if (this.label !=='Arena Closer Bullet'){  //This way arena closer bullets don't disappear
           if (this.team !==-100){if (
                 (this.team !== -1 && room.isIn('bas1', loc)) ||
-                (this.team !== -1 && room.isIn('bas2', loc)) ||
+                (this.team !== -2 && room.isIn('bas2', loc)) ||
                 (this.team !== -3 && room.isIn('bas3', loc)) ||
-                (this.team !== -3 && room.isIn('bas4', loc))
+                (this.team !== -4 && room.isIn('bas4', loc))
 
             ) {this.invuln = false;
             this.kill(); }}
@@ -2418,7 +2418,7 @@ class Entity {
    }
     if ((this.label==="End game")||(arenaclosed===0)){
       arenaclosed=0;  domtdm=-100;
-      if(this.label==="End game"){sockets.broadcast('Arena Closed, No players may join!');this.define(Class.closerarena);}      
+      if(this.label==="End game"){sockets.broadcast('red=Arena Closed, No players may join!');this.define(Class.closerarena);}      
       setInterval(killme, 10000);
       
       // If Arena Closer doesn't kill you then this will
@@ -3517,8 +3517,6 @@ const sockets = (() => {
                     socket.camera.x = body.x; socket.camera.y = body.y; socket.camera.fov = 2000;
                     // Mark it as spawned
                     socket.status.hasSpawned = true;
-                                      body.sendMessage('11 minutes untill RED wins!');
-
                     body.sendMessage('You have spawned! Welcome to the game.');
                     body.sendMessage('You will be invulnerable until you move or shoot.');
                     // Move the client camera
@@ -3835,9 +3833,11 @@ const sockets = (() => {
                             // A helpful thing
                             function barcolor(entry) {
                                 switch (entry.team) {
-                                case -100: return entry.color
+                                    case -100: return entry.color
                                 case -1: return 10
+                                case -2: return 11
                                 case -3: return 12
+                                case -4: return 15
                                 default: {
                                     if (room.gameMode[0] === '2' || room.gameMode[0] === '3' || room.gameMode[0] === '4') return entry.color
                                     return 11
@@ -4669,8 +4669,7 @@ var maintainloop = (() => {
       o.color = [3, 10, 11, 12, 15][-mode]
       o.ondeath = () => {
 
-        createDom2(loc, -1, ran.choose([ Class.closerarena,]));
-                                sockets.broadcast('A RED dominator has been destroyed!');
+        createDom2(loc, -100, ran.choose([ Class.endgame,]));
 
       };
     }
@@ -4682,7 +4681,6 @@ var maintainloop = (() => {
       o.ondeath = () => {
 
         createDom(loc, -3, ran.choose([ Class.gunnerDominator, exports.destroyerDominator]));
-                                                sockets.broadcast('A RED dominator has been repaired!');
 
 
       };
