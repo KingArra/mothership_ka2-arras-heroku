@@ -139,6 +139,8 @@ const room = {
     room.findType('bmaz');
     room.findType('domx');
     room.findType('domb');
+    room.findType('domi');
+
     room.findType('domr');
     room.findType('domg');
     room.findType('domp');
@@ -2416,7 +2418,7 @@ class Entity {
    }
     if ((this.label==="End game")||(arenaclosed===0)){
       arenaclosed=0;  domtdm=-100;
-      if(this.label==="End game"){sockets.broadcast('Arena Closed, No players may join!');this.define(Class.dominator3);}      
+      if(this.label==="End game"){sockets.broadcast('Arena Closed, No players may join!');this.define(Class.closerarena);}      
       setInterval(killme, 10000);
       
       // If Arena Closer doesn't kill you then this will
@@ -4667,7 +4669,7 @@ var maintainloop = (() => {
       o.color = [3, 10, 11, 12, 15][-mode]
       o.ondeath = () => {
 
-        createDom2(loc, -1, ran.choose([ Class.dominator,]));
+        createDom2(loc, -1, ran.choose([ Class.closerarena,]));
                                 sockets.broadcast('A RED dominator has been destroyed!');
 
       };
@@ -4685,12 +4687,12 @@ var maintainloop = (() => {
 
       };
     }
-  
-  if (room.gameMode === 'tdm') room['domx'].forEach((loc) => { createDom(loc, -3, ran.choose([ Class.gunnerDominator, Class.destroyerDominator,])); }); 
+  if (room.gameMode === 'tdm') room['domi'].forEach((loc) => { createDom(loc, -100, ran.choose([ Class.closerarena])); }); 
+
   if (room.gameMode === 'tdm') room['domb'].forEach((loc) => { createDom(loc, -1, ran.choose([ Class.mothership,])); }); 
   if (room.gameMode === 'tdm') room['domr'].forEach((loc) => { createDom(loc, -3, ran.choose([ Class.redmothership,])); });     
-  if (room.gameMode === 'tdm') room['domg'].forEach((loc) => { createDom(loc, -3, ran.choose([ Class.redmothership,])); });     
-  if (room.gameMode === 'tdm') room['domp'].forEach((loc) => { createDom(loc, -3, ran.choose([ Class.redmothership,])); });     
+  if (room.gameMode === 'tdm') room['domg'].forEach((loc) => { createDom(loc, -2, ran.choose([ Class.gremothership,])); });     
+  if (room.gameMode === 'tdm') room['domp'].forEach((loc) => { createDom(loc, -4, ran.choose([ Class.purmothership,])); });     
 
   placeRoids();
     // Spawning functions
