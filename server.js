@@ -138,8 +138,10 @@ const room = {
     room.findType('bas4');
     room.findType('bmaz');
     room.findType('domx');
-    room.findType('dom1');
-    room.findType('dom0');
+    room.findType('domb');
+    room.findType('domr');
+    room.findType('domg');
+    room.findType('domp');
     room.findType('roid');
     room.findType('rock');
     room.nestFoodAmount = 1.5 * Math.sqrt(room.nest.length) / room.xgrid / room.ygrid;
@@ -2394,9 +2396,9 @@ class Entity {
           if (this.label !=='Arena Closer Bullet'){  //This way arena closer bullets don't disappear
           if (this.team !==-100){if (
                 (this.team !== -1 && room.isIn('bas1', loc)) ||
-                (this.team !== -2 && room.isIn('bas2', loc)) ||
+                (this.team !== -1 && room.isIn('bas2', loc)) ||
                 (this.team !== -3 && room.isIn('bas3', loc)) ||
-                (this.team !== -4 && room.isIn('bas4', loc))
+                (this.team !== -3 && room.isIn('bas4', loc))
 
             ) {this.invuln = false;
             this.kill(); }}
@@ -3833,9 +3835,7 @@ const sockets = (() => {
                                 switch (entry.team) {
                                 case -100: return entry.color
                                 case -1: return 10
-                                case -2: return 11
                                 case -3: return 12
-                                case -4: return 15
                                 default: {
                                     if (room.gameMode[0] === '2' || room.gameMode[0] === '3' || room.gameMode[0] === '4') return entry.color
                                     return 11
@@ -3944,11 +3944,9 @@ const sockets = (() => {
                   switch (entry.team) {
                     case -100: return entry.color
                     case -1: return 10
-                    case -2: return 11
                     case -3: return 12
-                    case -4: return 15
                     default:
-                      if (room.gameMode[0] === '2' || room.gameMode[0] === '3' || room.gameMode[0] === '4') return entry.color
+                      if (room.gameMode[0] === '3' ) return entry.color
                       return 11
                   }
                 }
@@ -4689,8 +4687,12 @@ var maintainloop = (() => {
     }
   
   if (room.gameMode === 'tdm') room['domx'].forEach((loc) => { createDom(loc, -3, ran.choose([ Class.gunnerDominator, Class.destroyerDominator,])); }); 
-  if (room.gameMode === 'tdm') room['dom1'].forEach((loc) => { createDom(loc, -1, ran.choose([ Class.gunnerDominator, Class.destroyerDominator,])); }); 
-  if (room.gameMode === 'tdm') room['dom0'].forEach((loc) => { createDom(loc, -3, ran.choose([ Class.gunnerDominator, Class.destroyerDominator,])); });     placeRoids();
+  if (room.gameMode === 'tdm') room['domb'].forEach((loc) => { createDom(loc, -1, ran.choose([ Class.mothership,])); }); 
+  if (room.gameMode === 'tdm') room['domr'].forEach((loc) => { createDom(loc, -3, ran.choose([ Class.redmothership,])); });     
+  if (room.gameMode === 'tdm') room['domg'].forEach((loc) => { createDom(loc, -3, ran.choose([ Class.redmothership,])); });     
+  if (room.gameMode === 'tdm') room['domp'].forEach((loc) => { createDom(loc, -3, ran.choose([ Class.redmothership,])); });     
+
+  placeRoids();
     // Spawning functions
     let spawnBosses = (() => {
         let timer = 0;
