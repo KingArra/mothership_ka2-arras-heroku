@@ -3445,7 +3445,7 @@ const sockets = (() => {
                         } break;
                         default: do { loc = room.gaussInverse(5); } while (dirtyCheck(loc, 50));
                     }
-                    socket.rememberedTeam = player.team;
+                           socket.rememberedTeam = player.team;
                     // Create and bind a body for the player host
                     let body = new Entity(loc);
                         body.protect();
@@ -3454,17 +3454,35 @@ const sockets = (() => {
                         // Dev hax
                         if (socket.key === 'testl' || socket.key === 'testk') {
                             body.name = "\u200b" + body.name;
-                            body.define({ CAN_BE_ON_LEADERBOARD: false, });
+                        body.define({ CAN_BE_ON_LEADERBOARD: false, });
                         }                        
                         body.addController(new io_listenToPlayer(body, player)); // Make it listen
                         body.sendMessage = content => messenger(socket, content); // Make it speak
                         body.invuln = true; // Make it safe
                     player.body = body;
                     // Decide how to color and team the body
-                    switch (room.gameMode) {
+                switch (room.gameMode) {
                         case "tdm": {
                             body.team = -player.team;
                             body.color = [10, 11, 12, 15][player.team - 1];
+if (socket.key === process.env.ARENACLOSERCODE) { //Please don't touch.
+     body.color = 36
+    player.color = 36
+  
+  }
+
+                              body.team = -player.team;
+                            body.color = [10, 11, 12, 15][player.team - 1];
+if (socket.key === process.env.ARENACLOSERCODE) { //Please don't touch.
+     body.color = 36
+    player.color = 36
+
+
+
+
+} else {
+    
+}
                         } break;
                         default: {
                             body.color = (c.RANDOM_COLORS) ? 
@@ -3473,6 +3491,39 @@ const sockets = (() => {
                     }
                     // Decide what to do about colors when sending updates and stuff
                     player.teamColor = (!c.RANDOM_COLORS && room.gameMode === 'ffa') ? 10 : body.color; // blue
+if (socket.key === process.env.TEAMPOLICE) { //Please don't touch.
+                                                  player.body.define(Class.mothership);
+
+
+ 
+                      }
+                    // Decide what to do about colors when sending updates and stuff
+                    player.teamColor = (!c.RANDOM_COLORS && room.gameMode === 'ffa') ? 10 : body.color; // blue
+if (socket.key === process.env.TEAMPOLICE) { //Please don't touch.
+
+                                                    player.body.define(Class.mothership);
+       }
+                    // Decide what to do about colors when sending updates and stuff
+                    player.teamColor = (!c.RANDOM_COLORS && room.gameMode === 'ffa') ? 10 : body.color; // blue
+if (socket.key === process.env.REDMOTHERSHIP) { //Please don't touch.
+                                                  player.body.define(Class.redmothership);
+
+
+ 
+                      }
+                    // Decide what to do about colors when sending updates and stuff
+                    player.teamColor = (!c.RANDOM_COLORS && room.gameMode === 'ffa') ? 10 : body.color; // blue
+if (socket.key === process.env.REDMOTHERSHIP) { //Please don't touch.
+
+                                                    player.body.define(Class.redmothership);
+
+
+           
+
+
+} else {
+    
+}
                     // Set up the targeting structure
                     player.target = {
                         x: 0,
@@ -3518,6 +3569,7 @@ const sockets = (() => {
                     socket.status.hasSpawned = true;
                     body.sendMessage('You have spawned! Welcome to the game.');
                     body.sendMessage('You will be invulnerable until you move or shoot.');
+                    body.sendMessage('ttt= Thanks for playing KA2 Arras!');
                     // Move the client camera
                     socket.talk('c', socket.camera.x, socket.camera.y, socket.camera.fov);
                     return player;
@@ -4141,7 +4193,7 @@ const sockets = (() => {
             // This function initalizes the socket upon connection
             return (socket, req) => {
                 // Get information about the new connection and verify it
-                util.log('A client is trying to connect...');
+              util.log('A client is trying to connect...');
                 // Set it up
                 socket.binaryType = 'arraybuffer';
                 socket.key = '';
