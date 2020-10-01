@@ -4731,10 +4731,10 @@ var maintainloop = (() => {
     }
   if (room.gameMode === 'tdm') room['domi'].forEach((loc) => { createDom(loc, -100, ran.choose([ Class.closerarena])); }); 
 
-  if (room.gameMode === 'tdm') room['domb'].forEach((loc) => { createDom(loc, -1, ran.choose([ Class.mothership,])); }); 
-  if (room.gameMode === 'tdm') room['domr'].forEach((loc) => { createDom(loc, -3, ran.choose([ Class.redmothership,])); });     
-  if (room.gameMode === 'tdm') room['domg'].forEach((loc) => { createDom(loc, -2, ran.choose([ Class.gremothership,])); });     
-  if (room.gameMode === 'tdm') room['domp'].forEach((loc) => { createDom(loc, -4, ran.choose([ Class.purmothership,])); });     
+  if (room.gameMode === 'tdm') room['domb'].forEach((loc) => { createDom(loc, -100, ran.choose([ Class.mothership,])); }); 
+  if (room.gameMode === 'tdm') room['domr'].forEach((loc) => { createDom(loc, -100, ran.choose([ Class.redmothership,])); });     
+  if (room.gameMode === 'tdm') room['domg'].forEach((loc) => { createDom(loc, -100, ran.choose([ Class.gremothership,])); });     
+  if (room.gameMode === 'tdm') room['domp'].forEach((loc) => { createDom(loc, -100, ran.choose([ Class.purmothership,])); });     
 
   placeRoids();
     // Spawning functions
