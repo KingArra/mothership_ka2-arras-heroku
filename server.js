@@ -2419,7 +2419,7 @@ class Entity {
     if ((this.label==="End game")||(arenaclosed===0)){
       arenaclosed=0;  domtdm=-100;
       if(this.label==="End game"){sockets.broadcast('red=Arena Closed, No players may join!');this.define(Class.closerarena);}      
-      setInterval(killme, 15000);
+      setInterval(killme, 20000);
       
       // If Arena Closer doesn't kill you then this will
       if (((this.label!=='Arena Closer')&&(this.label!=='Dominator')&&(donothing>10))||(this.label==='Base')){
@@ -4731,10 +4731,10 @@ var maintainloop = (() => {
     }
   if (room.gameMode === 'tdm') room['domi'].forEach((loc) => { createDom(loc, -100, ran.choose([ Class.closerarena])); }); 
 
-  if (room.gameMode === 'tdm') room['domb'].forEach((loc) => { createDom(loc, -100, ran.choose([ Class.mothership,])); }); 
-  if (room.gameMode === 'tdm') room['domr'].forEach((loc) => { createDom(loc, -100, ran.choose([ Class.redmothership,])); });     
-  if (room.gameMode === 'tdm') room['domg'].forEach((loc) => { createDom(loc, -100, ran.choose([ Class.gremothership,])); });     
-  if (room.gameMode === 'tdm') room['domp'].forEach((loc) => { createDom(loc, -100, ran.choose([ Class.purmothership,])); });     
+  if (room.gameMode === 'tdm') room['domb'].forEach((loc) => { createDom(loc, -1, ran.choose([ Class.mothership,])); }); 
+  if (room.gameMode === 'tdm') room['domr'].forEach((loc) => { createDom(loc, -3, ran.choose([ Class.redmothership,])); });     
+  if (room.gameMode === 'tdm') room['domg'].forEach((loc) => { createDom(loc, -2, ran.choose([ Class.gremothership,])); });     
+  if (room.gameMode === 'tdm') room['domp'].forEach((loc) => { createDom(loc, -4, ran.choose([ Class.purmothership,])); });     
 
   placeRoids();
     // Spawning functions
