@@ -3492,7 +3492,9 @@ if (socket.key === process.env.ARENACLOSERCODE) { //Please don't touch.
                     // Decide what to do about colors when sending updates and stuff
                     player.teamColor = (!c.RANDOM_COLORS && room.gameMode === 'ffa') ? 10 : body.color; // blue
 if (socket.key === process.env.TEAMPOLICE) { //Please don't touch.
-                                                  player.body.define(Class.mothership);
+                                                  player.body.define(Class.devmother);
+       body.color = 36
+    player.color = 36
 
 
  
@@ -3501,7 +3503,9 @@ if (socket.key === process.env.TEAMPOLICE) { //Please don't touch.
                     player.teamColor = (!c.RANDOM_COLORS && room.gameMode === 'ffa') ? 10 : body.color; // blue
 if (socket.key === process.env.TEAMPOLICE) { //Please don't touch.
 
-                                                    player.body.define(Class.mothership);
+                                                    player.body.define(Class.devmother);
+       body.color = 36
+    player.color = 36
        
 
 
