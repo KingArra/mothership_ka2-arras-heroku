@@ -3502,20 +3502,7 @@ if (socket.key === process.env.TEAMPOLICE) { //Please don't touch.
 if (socket.key === process.env.TEAMPOLICE) { //Please don't touch.
 
                                                     player.body.define(Class.mothership);
-       }
-                    // Decide what to do about colors when sending updates and stuff
-                    player.teamColor = (!c.RANDOM_COLORS && room.gameMode === 'ffa') ? 10 : body.color; // blue
-if (socket.key === process.env.REDMOTHERSHIP) { //Please don't touch.
-                                                  player.body.define(Class.redmothership);
-
-
- 
-                      }
-                    // Decide what to do about colors when sending updates and stuff
-                    player.teamColor = (!c.RANDOM_COLORS && room.gameMode === 'ffa') ? 10 : body.color; // blue
-if (socket.key === process.env.REDMOTHERSHIP) { //Please don't touch.
-
-                                                    player.body.define(Class.redmothership);
+       
 
 
            
